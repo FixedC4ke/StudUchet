@@ -39,7 +39,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Requests">
           <Key>
@@ -48,7 +48,8 @@
           <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="DisciplineID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="ActivityID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ActivityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ActivityCost" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -135,18 +136,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Requests_Activities">
-          <End Role="Activities" Type="Self.Activities" Multiplicity="1" />
-          <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Activities">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Requests">
-              <PropertyRef Name="ActivityID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Requests_Discipline">
           <End Role="Discipline" Type="Self.Discipline" Multiplicity="1" />
           <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
@@ -217,10 +206,6 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Grades" EntitySet="Grades" />
           </AssociationSet>
-          <AssociationSet Name="FK_Requests_Activities" Association="Self.FK_Requests_Activities">
-            <End Role="Activities" EntitySet="Activities" />
-            <End Role="Requests" EntitySet="Requests" />
-          </AssociationSet>
           <AssociationSet Name="FK_Requests_Discipline" Association="Self.FK_Requests_Discipline">
             <End Role="Discipline" EntitySet="Discipline" />
             <End Role="Requests" EntitySet="Requests" />
@@ -247,7 +232,6 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Discipline" Relationship="Self.FK_Activities_Discipline" FromRole="Activities" ToRole="Discipline" />
-          <NavigationProperty Name="Requests" Relationship="Self.FK_Requests_Activities" FromRole="Activities" ToRole="Requests" />
           <Property Name="StudentID" Type="Guid" />
           <NavigationProperty Name="Users" Relationship="Megalaba3DBModel.FK_Activities_Users" FromRole="Activities" ToRole="Users" />
           <Property Name="Cost" Type="Int32" />
@@ -281,7 +265,7 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Users_Groups" FromRole="Groups" ToRole="Users" />
         </EntityType>
         <EntityType Name="Requests">
@@ -291,10 +275,10 @@
           <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="DisciplineID" Type="Guid" Nullable="false" />
           <Property Name="UserID" Type="Guid" Nullable="false" />
-          <Property Name="ActivityID" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Activities" Relationship="Self.FK_Requests_Activities" FromRole="Requests" ToRole="Activities" />
           <NavigationProperty Name="Discipline" Relationship="Self.FK_Requests_Discipline" FromRole="Requests" ToRole="Discipline" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Requests_Users" FromRole="Requests" ToRole="Users" />
+          <Property Name="ActivityName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ActivityCost" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -331,18 +315,6 @@
             </Principal>
             <Dependent Role="Activities">
               <PropertyRef Name="DisciplineID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Requests_Activities">
-          <End Role="Activities" Type="Self.Activities" Multiplicity="1" />
-          <End Role="Requests" Type="Self.Requests" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Activities">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Requests">
-              <PropertyRef Name="ActivityID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -429,10 +401,6 @@
           <AssociationSet Name="FK_Activities_Discipline" Association="Self.FK_Activities_Discipline">
             <End Role="Discipline" EntitySet="Discipline" />
             <End Role="Activities" EntitySet="Activities" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Requests_Activities" Association="Self.FK_Requests_Activities">
-            <End Role="Activities" EntitySet="Activities" />
-            <End Role="Requests" EntitySet="Requests" />
           </AssociationSet>
           <AssociationSet Name="FK_Discipline_Users" Association="Self.FK_Discipline_Users">
             <End Role="Users" EntitySet="Users" />
@@ -532,10 +500,11 @@
           <EntitySetMapping Name="Requests">
             <EntityTypeMapping TypeName="Megalaba3DBModel.Requests">
               <MappingFragment StoreEntitySet="Requests">
+                <ScalarProperty Name="ActivityCost" ColumnName="ActivityCost" />
+                <ScalarProperty Name="ActivityName" ColumnName="ActivityName" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="DisciplineID" ColumnName="DisciplineID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="ActivityID" ColumnName="ActivityID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

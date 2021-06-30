@@ -1,7 +1,7 @@
 ﻿
 namespace Megalaba3
 {
-    partial class Auth
+    partial class AddActivity
     {
         /// <summary>
         /// Required designer variable.
@@ -30,47 +30,57 @@ namespace Megalaba3
         private void InitializeComponent()
         {
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(74, 12);
+            this.textBox1.Location = new System.Drawing.Point(12, 12);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 20);
+            this.textBox1.Size = new System.Drawing.Size(196, 20);
             this.textBox1.TabIndex = 0;
             // 
-            // textBox2
+            // textBox3
             // 
-            this.textBox2.Location = new System.Drawing.Point(74, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
-            this.textBox2.Size = new System.Drawing.Size(154, 20);
-            this.textBox2.TabIndex = 1;
+            this.textBox3.Location = new System.Drawing.Point(12, 119);
+            this.textBox3.MaxLength = 2;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(196, 20);
+            this.textBox3.TabIndex = 2;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(74, 76);
+            this.button1.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.button1.Location = new System.Drawing.Point(12, 145);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(154, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Войти";
+            this.button1.Size = new System.Drawing.Size(196, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Добавить задание";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Auth
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(12, 38);
+            this.richTextBox1.MaxLength = 100;
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(196, 75);
+            this.richTextBox1.TabIndex = 4;
+            this.richTextBox1.Text = "";
+            // 
+            // AddActivity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 111);
+            this.ClientSize = new System.Drawing.Size(224, 179);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox1);
-            this.Name = "Auth";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Вход";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Auth_KeyDown);
+            this.Name = "AddActivity";
+            this.Text = "AddActivity";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -79,7 +89,8 @@ namespace Megalaba3
         #endregion
 
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

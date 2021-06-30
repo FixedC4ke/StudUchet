@@ -17,9 +17,9 @@ namespace Megalaba3
         public System.Guid ID { get; set; }
         public System.Guid DisciplineID { get; set; }
         public System.Guid UserID { get; set; }
-        public System.Guid ActivityID { get; set; }
+        public string ActivityName { get; set; }
+        public int ActivityCost { get; set; }
     
-        public virtual Activities Activities { get; set; }
         public virtual Discipline Discipline { get; set; }
         public virtual Users Users { get; set; }
     }

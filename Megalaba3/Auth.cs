@@ -14,6 +14,7 @@ namespace Megalaba3
     {
         public Auth()
         {
+            this.KeyPreview = true;
             InitializeComponent();
         }
 
@@ -29,9 +30,17 @@ namespace Megalaba3
                 else
                 {
                     this.Hide();
-                    new Form1(users[0].ID, users[0].Role).ShowDialog();
+                    new Form1(users[0].ID, users[0].Role, users[0].Fullname).ShowDialog();
                     this.Show();
                 }
+            }
+        }
+
+        private void Auth_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(sender, e);
             }
         }
     }

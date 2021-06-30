@@ -13,7 +13,6 @@
         <EntityTypeShape EntityType="Megalaba3DBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Megalaba3DBModel.Users" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
         <AssociationConnector Association="Megalaba3DBModel.FK_Activities_Discipline" ManuallyRouted="false" />
-        <AssociationConnector Association="Megalaba3DBModel.FK_Requests_Activities" ManuallyRouted="false" />
         <AssociationConnector Association="Megalaba3DBModel.FK_Discipline_Users" ManuallyRouted="false" />
         <AssociationConnector Association="Megalaba3DBModel.FK_Grades_Discipline" ManuallyRouted="false" />
         <AssociationConnector Association="Megalaba3DBModel.FK_Requests_Discipline" ManuallyRouted="false" />

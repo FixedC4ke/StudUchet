@@ -14,12 +14,6 @@ namespace Megalaba3
     
     public partial class Activities
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Activities()
-        {
-            this.Requests = new HashSet<Requests>();
-        }
-    
         public System.Guid ID { get; set; }
         public System.Guid DisciplineID { get; set; }
         public string Name { get; set; }
@@ -29,8 +23,6 @@ namespace Megalaba3
         public bool Done { get; set; }
     
         public virtual Discipline Discipline { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Requests> Requests { get; set; }
         public virtual Users Users { get; set; }
     }
 }
