@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0b86aeaecb82435cb86b19b1b6534328" Name="Diagram1">
+        <EntityTypeShape EntityType="Megalaba3DBModel.Activities" Width="1.5" PointX="7.5" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Megalaba3DBModel.Discipline" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Megalaba3DBModel.Grades" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Megalaba3DBModel.Groups" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Megalaba3DBModel.Requests" Width="1.5" PointX="9.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Megalaba3DBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Megalaba3DBModel.Users" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="Megalaba3DBModel.FK_Activities_Discipline" ManuallyRouted="false" />
+        <AssociationConnector Association="Megalaba3DBModel.FK_Requests_Activities" ManuallyRouted="false" />
+        <AssociationConnector Association="Megalaba3DBModel.FK_Discipline_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="Megalaba3DBModel.FK_Grades_Discipline" ManuallyRouted="false" />
+        <AssociationConnector Association="Megalaba3DBModel.FK_Requests_Discipline" ManuallyRouted="false" />
+        <AssociationConnector Association="Megalaba3DBModel.FK_Grades_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="Megalaba3DBModel.FK_Users_Groups" ManuallyRouted="false" />
+        <AssociationConnector Association="Megalaba3DBModel.FK_Requests_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="Megalaba3DBModel.FK_Activities_Users" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
