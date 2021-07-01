@@ -30,6 +30,7 @@ namespace Megalaba3
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -52,6 +53,8 @@ namespace Megalaba3
             this.teacherReqMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.acceptReqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.declineReqToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.refreshButton = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -59,13 +62,14 @@ namespace Megalaba3
             this.studActMenu.SuspendLayout();
             this.studReqMenu.SuspendLayout();
             this.teacherReqMenu.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // treeView1
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 27);
+            this.treeView1.Location = new System.Drawing.Point(12, 52);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(204, 398);
+            this.treeView1.Size = new System.Drawing.Size(204, 373);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             // 
@@ -75,10 +79,10 @@ namespace Megalaba3
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(222, 27);
+            this.dataGridView1.Location = new System.Drawing.Point(222, 52);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(566, 398);
+            this.dataGridView1.Size = new System.Drawing.Size(566, 373);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
             // 
@@ -234,11 +238,32 @@ namespace Megalaba3
             this.declineReqToolStripMenuItem.Text = "Отклонить";
             this.declineReqToolStripMenuItem.Click += new System.EventHandler(this.declineReqToolStripMenuItem_Click);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.refreshButton});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(800, 25);
+            this.toolStrip1.TabIndex = 4;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // refreshButton
+            // 
+            this.refreshButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.refreshButton.Image = ((System.Drawing.Image)(resources.GetObject("refreshButton.Image")));
+            this.refreshButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.refreshButton.Name = "refreshButton";
+            this.refreshButton.Size = new System.Drawing.Size(23, 22);
+            this.refreshButton.Text = "Обновить";
+            this.refreshButton.Click += new System.EventHandler(this.refreshButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.treeView1);
@@ -258,6 +283,8 @@ namespace Megalaba3
             this.studActMenu.ResumeLayout(false);
             this.studReqMenu.ResumeLayout(false);
             this.teacherReqMenu.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -287,6 +314,8 @@ namespace Megalaba3
         private System.Windows.Forms.ToolStripMenuItem declineReqToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addGroupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addDiscToolStripMenuItem;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton refreshButton;
     }
 }
 

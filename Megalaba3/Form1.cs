@@ -28,6 +28,13 @@ namespace Megalaba3
             InitializeComponent();
         }
 
+
+        private void UpdateAll()
+        {
+            LoadMenu();
+            dataGridView1.DataSource = null;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
             adduserToolStripMenuItem.Visible = addGroupToolStripMenuItem.Visible = addDiscToolStripMenuItem.Visible = Role;
@@ -329,6 +336,11 @@ namespace Megalaba3
                 db.Discipline.Add(new Discipline() { ID = Guid.NewGuid(), Name = sa.Value, TeacherID = UserID });
                 db.SaveChanges();
             }
+        }
+
+        private void refreshButton_Click(object sender, EventArgs e)
+        {
+            UpdateAll();
         }
     }
 }
