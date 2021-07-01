@@ -46,17 +46,17 @@ namespace Megalaba3
 
 
                 var discs = (IQueryable<Discipline>)db.Discipline;
-                var groups = (IQueryable<Groups>) db.Groups;
+                var groups = (IQueryable<Groups>)db.Groups;
                 Users currentUser = db.Users.Find(UserID);
                 if (!Role)
                 {
-                    groups = db.Groups.Where(x=>x.ID==currentUser.GroupID);
+                    groups = db.Groups.Where(x => x.ID == currentUser.GroupID);
                 }
                 else
                 {
                     discs = db.Discipline.Where(x => x.TeacherID == currentUser.ID);
                 }
-                
+
 
                 for (int i = 0; i < treeView1.Nodes.Count; i++)
                 {
@@ -143,8 +143,8 @@ namespace Megalaba3
                 else
                 {
                     dataGridView1.ContextMenuStrip = studReqMenu;
-                    currentpath = path;
                 }
+                currentpath = path;
             }
         }
 
@@ -160,7 +160,7 @@ namespace Megalaba3
             {
                 string discname = currentpath[2];
                 var disc = db.Discipline.Where(x => x.Name == discname).First();
-                db.Activities.Add(new Activities() { ID = Guid.NewGuid(), Name = addActivity.ActName, Description = addActivity.Description, Cost = addActivity.Cost, DisciplineID=disc.ID, StudentID=null });
+                db.Activities.Add(new Activities() { ID = Guid.NewGuid(), Name = addActivity.ActName, Description = addActivity.Description, Cost = addActivity.Cost, DisciplineID = disc.ID, StudentID = null });
                 db.SaveChanges();
             }
         }
@@ -176,7 +176,7 @@ namespace Megalaba3
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            teacherActMenu.Items[1].Enabled = studActMenu.Items[0].Enabled = teacherReqMenu.Items[0].Enabled = teacherReqMenu.Items[1].Enabled = dataGridView1.SelectedRows.Count==1;
+            teacherActMenu.Items[1].Enabled = studActMenu.Items[0].Enabled = teacherReqMenu.Items[0].Enabled = teacherReqMenu.Items[1].Enabled = dataGridView1.SelectedRows.Count == 1;
         }
 
         private void studTakeActToolStripMenuItem_Click(object sender, EventArgs e)
@@ -201,8 +201,14 @@ namespace Megalaba3
             {
                 act.Done = true;
                 var stud = db.Users.Single(x => x.ID == act.StudentID);
-                var studgrade = db.Grades.Single(x => x.StudentID == stud.ID);
-                studgrade.Grade = (int)studgrade.Grade + (int)act.Cost;
+                var grades = db.Grades.SingleOrDefault(x => x.StudentID == stud.ID);
+                if (grades == null)
+                {
+                    string discname = currentpath[2];
+                    var disc = db.Discipline.Single(x => x.Name == discname);
+                    grades = db.Grades.Add(new Grades() { ID = Guid.NewGuid(), StudentID = stud.ID, DisciplineID = disc.ID, Grade = 0 });
+                }
+                grades.Grade = (int)grades.Grade + (int)act.Cost;
                 db.SaveChanges();
             }
         }
@@ -239,8 +245,8 @@ namespace Megalaba3
             if (req.ShowDialog() == DialogResult.OK)
             {
                 string discname = currentpath[2];
-                var disc = db.Discipline.Single(x=>x.Name==discname);
-                db.Requests.Add(new Requests() { ID = Guid.NewGuid(), UserID = UserID, ActivityName = req.ActivityName, ActivityCost = req.ActivityCost, DisciplineID=disc.ID });
+                var disc = db.Discipline.Single(x => x.Name == discname);
+                db.Requests.Add(new Requests() { ID = Guid.NewGuid(), UserID = UserID, ActivityName = req.ActivityName, ActivityCost = req.ActivityCost, DisciplineID = disc.ID });
                 db.SaveChanges();
             }
         }
@@ -250,7 +256,13 @@ namespace Megalaba3
             string name = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
             int grade = (int)dataGridView1.SelectedRows[0].Cells[2].Value;
             var req = db.Requests.Single(x => x.ActivityName == name && x.ActivityCost == grade);
-            var grades = db.Grades.Single(x => x.StudentID == req.UserID);
+            var grades = db.Grades.SingleOrDefault(x => x.StudentID == req.UserID);
+            if (grades == null)
+            {
+                string discname = currentpath[2];
+                var disc = db.Discipline.Single(x => x.Name == discname);
+                grades = db.Grades.Add(new Grades() { ID = Guid.NewGuid(), StudentID = req.UserID, DisciplineID = disc.ID, Grade=0});
+            }
             grades.Grade = (int)grades.Grade + (int)req.ActivityCost;
             db.Requests.Remove(req);
             db.SaveChanges();
@@ -279,7 +291,7 @@ namespace Megalaba3
                     if (au.Role)
                     {
                         Guid id = Guid.NewGuid();
-                        db.Users.Add(new Users() { ID = id, Username = au.Username, Password = au.Password, Role = au.Role, GroupID = null, Fullname=au.Fullname });
+                        db.Users.Add(new Users() { ID = id, Username = au.Username, Password = au.Password, Role = au.Role, GroupID = null, Fullname = au.Fullname });
                         var disc = db.Discipline.Single(x => x.ID == au.GroupOrDisc);
                         disc.TeacherID = id;
                         db.SaveChanges();
@@ -287,7 +299,7 @@ namespace Megalaba3
                     }
                     else
                     {
-                        db.Users.Add(new Users() { ID = Guid.NewGuid(), Username = au.Username, Password = au.Password, Role = au.Role, GroupID = au.GroupOrDisc, Fullname=au.Fullname });
+                        db.Users.Add(new Users() { ID = Guid.NewGuid(), Username = au.Username, Password = au.Password, Role = au.Role, GroupID = au.GroupOrDisc, Fullname = au.Fullname });
                         db.SaveChanges();
 
                     }
@@ -310,7 +322,7 @@ namespace Megalaba3
             SimpleAdd sa = new SimpleAdd("предмета");
             if (sa.ShowDialog() == DialogResult.OK)
             {
-                db.Discipline.Add(new Discipline() { ID = Guid.NewGuid(), Name = sa.Value, TeacherID=UserID });
+                db.Discipline.Add(new Discipline() { ID = Guid.NewGuid(), Name = sa.Value, TeacherID = UserID });
                 db.SaveChanges();
             }
         }
