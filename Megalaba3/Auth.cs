@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
+using System.Diagnostics;
 
 namespace Megalaba3
 {
@@ -22,15 +24,24 @@ namespace Megalaba3
         {
             using (DBEntities db = new DBEntities())
             {
-                var users = db.Users.Where(x => x.Username == textBox1.Text && x.Password == textBox2.Text).ToList();
-                if (users.Count==0)
+                string salt;
+                SHA256 hashfunc = SHA256.Create();
+                var user = db.Users.SingleOrDefault(x => x.Username == textBox1.Text);
+                if (user==null)
                 {
-                    MessageBox.Show("Неверный логин и/или пароль");
+                    MessageBox.Show("Пользователя с таким именем не существует");
+                    return;
+                }
+                salt = user.ID.ToString();
+                string password = Convert.ToBase64String(hashfunc.ComputeHash(Encoding.UTF8.GetBytes(salt + textBox2.Text)));
+                if (user.Password!=password)
+                {
+                    MessageBox.Show("Неверный пароль");
                 }
                 else
                 {
                     this.Hide();
-                    new Form1(users[0].ID, users[0].Role, users[0].Fullname).ShowDialog();
+                    new Form1(user.ID, user.Role, user.Fullname).ShowDialog();
                     this.Show();
                 }
             }

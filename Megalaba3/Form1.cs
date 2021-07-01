@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Data.Entity;
+using System.Security.Cryptography;
 
 namespace Megalaba3
 {
@@ -288,10 +289,13 @@ namespace Megalaba3
                 }
                 else
                 {
+                    SHA256 hashfunc = SHA256.Create();
+                    Guid id = Guid.NewGuid();
+                    string salt = id.ToString();
+                    string password = Convert.ToBase64String(hashfunc.ComputeHash(Encoding.UTF8.GetBytes(salt + au.Password)));
                     if (au.Role)
                     {
-                        Guid id = Guid.NewGuid();
-                        db.Users.Add(new Users() { ID = id, Username = au.Username, Password = au.Password, Role = au.Role, GroupID = null, Fullname = au.Fullname });
+                        db.Users.Add(new Users() { ID = id, Username = au.Username, Password = password, Role = au.Role, GroupID = null, Fullname = au.Fullname });
                         var disc = db.Discipline.Single(x => x.ID == au.GroupOrDisc);
                         disc.TeacherID = id;
                         db.SaveChanges();
@@ -299,7 +303,7 @@ namespace Megalaba3
                     }
                     else
                     {
-                        db.Users.Add(new Users() { ID = Guid.NewGuid(), Username = au.Username, Password = au.Password, Role = au.Role, GroupID = au.GroupOrDisc, Fullname = au.Fullname });
+                        db.Users.Add(new Users() { ID = id, Username = au.Username, Password = password, Role = au.Role, GroupID = au.GroupOrDisc, Fullname = au.Fullname });
                         db.SaveChanges();
 
                     }
