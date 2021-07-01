@@ -50,9 +50,9 @@ namespace Megalaba3
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(18, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 13);
+            this.label1.Size = new System.Drawing.Size(60, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Название";
+            this.label1.Text = "Название ";
             // 
             // textBox1
             // 
@@ -69,6 +69,7 @@ namespace Megalaba3
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SimpleAdd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.SimpleAdd_Load);
