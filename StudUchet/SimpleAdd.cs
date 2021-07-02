@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Megalaba3
+namespace StudUchet
 {
     public partial class SimpleAdd : Form
     {

@@ -7,13 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Megalaba3
+namespace StudUchet
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class ShowGrades_Result
+    public partial class sysdiagrams
     {
-        public string ФИО { get; set; }
-        public int Баллы { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

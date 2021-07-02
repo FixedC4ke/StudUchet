@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Megalaba3
+namespace StudUchet
 {
     using System;
     using System.Data.Entity;

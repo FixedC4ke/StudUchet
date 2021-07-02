@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 using System.Data.Entity;
 using System.Security.Cryptography;
 
-namespace Megalaba3
+namespace StudUchet
 {
     public partial class Form1 : Form
     {

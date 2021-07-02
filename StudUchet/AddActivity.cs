@@ -8,21 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Megalaba3
+namespace StudUchet
 {
-    public partial class AddRequest : Form
+    public partial class AddActivity : Form
     {
-        public string ActivityName { get; set; }
-        public int ActivityCost { get; set; }
-        public AddRequest()
+        public string ActName { get; set; }
+        public string Description { get; set;}
+        public int Cost { get; set; }
+        public AddActivity()
         {
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ActivityName = textBox1.Text;
-            ActivityCost = Int32.Parse(textBox2.Text);
+            ActName = textBox1.Text;
+            Description = richTextBox1.Text;
+            Cost = Int32.Parse(textBox3.Text);
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Megalaba3
+namespace StudUchet
 {
     static class Program
     {

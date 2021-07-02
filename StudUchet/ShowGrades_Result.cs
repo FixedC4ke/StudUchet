@@ -7,19 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Megalaba3
+namespace StudUchet
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Grades
+    public partial class ShowGrades_Result
     {
-        public System.Guid ID { get; set; }
-        public System.Guid StudentID { get; set; }
-        public System.Guid DisciplineID { get; set; }
-        public int Grade { get; set; }
-    
-        public virtual Discipline Discipline { get; set; }
-        public virtual Users Users { get; set; }
+        public string ФИО { get; set; }
+        public int Баллы { get; set; }
     }
 }

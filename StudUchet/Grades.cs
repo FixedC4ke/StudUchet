@@ -7,20 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Megalaba3
+namespace StudUchet
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Activities
+    public partial class Grades
     {
         public System.Guid ID { get; set; }
+        public System.Guid StudentID { get; set; }
         public System.Guid DisciplineID { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public Nullable<System.Guid> StudentID { get; set; }
-        public Nullable<int> Cost { get; set; }
-        public bool Done { get; set; }
+        public int Grade { get; set; }
     
         public virtual Discipline Discipline { get; set; }
         public virtual Users Users { get; set; }

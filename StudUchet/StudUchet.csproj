@@ -7,8 +7,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DD47E589-B3A1-4442-9CCC-D763338F3A48}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Megalaba3</RootNamespace>
-    <AssemblyName>Megalaba3</AssemblyName>
+    <RootNamespace>StudUchet</RootNamespace>
+    <AssemblyName>StudUchet</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -158,6 +158,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SimpleAdd.resx">
       <DependentUpon>SimpleAdd.cs</DependentUpon>

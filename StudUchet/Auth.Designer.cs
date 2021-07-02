@@ -1,5 +1,5 @@
 ﻿
-namespace Megalaba3
+namespace StudUchet
 {
     partial class Auth
     {

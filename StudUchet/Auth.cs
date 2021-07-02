@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Security.Cryptography;
 using System.Diagnostics;
 
-namespace Megalaba3
+namespace StudUchet
 {
     public partial class Auth : Form
     {

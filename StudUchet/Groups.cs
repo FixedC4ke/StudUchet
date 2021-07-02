@@ -7,31 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Megalaba3
+namespace StudUchet
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Discipline
+    public partial class Groups
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Discipline()
+        public Groups()
         {
-            this.Activities = new HashSet<Activities>();
-            this.Grades = new HashSet<Grades>();
-            this.Requests = new HashSet<Requests>();
+            this.Users = new HashSet<Users>();
         }
     
         public System.Guid ID { get; set; }
         public string Name { get; set; }
-        public System.Guid TeacherID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Activities> Activities { get; set; }
-        public virtual Users Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Grades> Grades { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Requests> Requests { get; set; }
+        public virtual ICollection<Users> Users { get; set; }
     }
 }
